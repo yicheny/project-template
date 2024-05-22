@@ -7,17 +7,17 @@ import {getKey, MenuProvider} from "./common";
 import _ from 'lodash'
 import {execute} from "../../../common/utils";
 
-const Menu = ({ items, style, className, onClick, onBranchClick, onLeafClick }) => {
+const Menu = ({ items, style, className, onClick, onBranchClick, onLeafClick, defaultActiveKey }) => {
     // const openKeyRef = useRef(new Map())
     const [openKey,setOpenKey] = useState(new Map())
-    const [activeKey, setActiveKey] = useState(null);
+    const [activeKey, setActiveKey] = useState(defaultActiveKey);
 
     return (
         <MenuProvider value={{
             activeKey,
             onClick:handleClick,
             onBranchClick:handleBranchClick,
-            onLeafClick
+            onLeafClick:handleLeftClick,
         }}>
             <ul className={clsx("b-menu", className)} style={style}>
                 {items.map((item, index) => {
@@ -33,6 +33,10 @@ const Menu = ({ items, style, className, onClick, onBranchClick, onLeafClick }) 
 
     function handleClick(item) {
         execute(onClick,item)
+    }
+
+    function handleLeftClick(item) {
+        execute(onLeafClick,item)
 
         const key = getKey(item);
         setActiveKey(key);
