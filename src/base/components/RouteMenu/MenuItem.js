@@ -1,9 +1,12 @@
 // src/components/MenuItem.js
 import React from 'react';
 import classNames from 'clsx';
-import {getKey} from "./common";
+import {getKey, useMenu} from "./common";
+import {execute, hasData} from "../../../common/utils";
 
-const MenuItem = ({ item, openKey, onClick, activeKey }) => {
+const MenuItem = ({ item, openKey }) => {
+    const { onClick, activeKey, onBranchClick, onLeafClick } = useMenu()
+
     const key = getKey(item);
     const isOpen= openKey === key
     const isActive= activeKey === key
@@ -11,6 +14,12 @@ const MenuItem = ({ item, openKey, onClick, activeKey }) => {
 
     const handleClick = () => {
         onClick(item);
+
+        if(hasData(item.subMenu)) {
+            execute(onBranchClick, item)
+        }else{
+            execute(onLeafClick, item)
+        }
     };
 
     return (
@@ -28,8 +37,6 @@ const MenuItem = ({ item, openKey, onClick, activeKey }) => {
                             key={index}
                             item={subItem}
                             // openKey={openKey}
-                            activeKey={activeKey}
-                            onClick={onClick}
                         />
                     ))}
                 </ul>

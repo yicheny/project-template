@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css'
-import { Menu } from "./base/components";
+import {RouteMenu} from "./base/components";
 
 function App({children}) {
     const menuItems = [
         {
             label: 'Home',
             to: '/'
+        },
+        {
+            label: 'Hello',
+            to: '/hello'
         },
         {
             label: 'Frontend',
@@ -36,7 +40,7 @@ function App({children}) {
 
     return (
         <div className="app">
-            <Menu className={'app-menu'} items={menuItems} />
+            <RouteMenu className={'app-menu'} items={menuItems} />
             <div className={'app-content'}>
                 {children}
             </div>
