@@ -40,7 +40,10 @@ function App({children}) {
 
     return (
         <div className="app">
-            <RouteMenu className={'app-menu'} items={menuItems} />
+            <RouteMenu className={'app-route-menu'}
+                       menuClassName={'app-menu'}
+                       items={menuItems}
+                       defaultClose={false}/>
             <div className={'app-content'}>
                 {children}
             </div>

@@ -3,9 +3,12 @@
     height: 100vh;
 }
 
+.app-route-menu{
+    height:100%;
+}
+
 .app-menu{
     width: 240px;
-    height:100%;
 }
 
 .app-content{

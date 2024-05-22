@@ -1,0 +1,30 @@
+.b-route-menu .b-menu{
+    transition: width 0.3s ease; /* 添加过渡效果 */
+}
+
+.b-route-menu.close .b-menu{
+    width: 0;
+    overflow: auto;
+}
+
+.b-route-menu-button {
+    width: 100%;
+    background-color: #fff; /* 白色背景 */
+    border:none;
+    border-bottom: 1px solid #f0f0f0; /* 浅灰色边框 */
+    border-right: 1px solid #f0f0f0; /* 浅灰色边框 */
+    padding: 10px 16px; /* 按钮内边距 */
+    cursor: pointer; /* 鼠标悬停样式 */
+    /*border-radius: 4px; !* 圆角 *!*/
+    font-size: 16px; /* 字体大小 */
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+    /*font-weight: bold;*/
+}
+
+.b-route-menu-button:hover {
+    background-color: #f0f0f0; /* 悬停时背景颜色 */
+}
+
+.b-route-menu-button:active {
+    background-color: #d9d9d9; /* 点击时背景颜色 */
+}
