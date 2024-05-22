@@ -4,8 +4,10 @@
 模板项目包含以下功能：
 1. [x] 路由系统
 2. [ ] 配置扩展
+3. [ ] 菜单
 
 额外安装的依赖库：
 1. `react-router-dom`
 2. `lodash`
 3. `clsx`
+4. `@ant-design/icons`
