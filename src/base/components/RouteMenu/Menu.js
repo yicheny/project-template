@@ -30,7 +30,7 @@ const Menu = ({ items, style, className }) => {
 
 
     return (
-        <ul className={clsx("menu",className)} style={style}>
+        <ul className={clsx("b-menu",className)} style={style}>
             {items.map((item, index) => {
                 return <MenuItem
                     key={index}

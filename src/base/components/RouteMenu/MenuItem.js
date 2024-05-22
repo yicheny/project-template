@@ -15,14 +15,14 @@ const MenuItem = ({ item, openKey, onClick, activeKey }) => {
 
     return (
         <li>
-            <div className={classNames('menu-item', { active: isActive })} onClick={handleClick}>
+            <div className={classNames('b-menu-item', { active: isActive })} onClick={handleClick}>
                 {item.label}
                 {item.subMenu && (
                     <span>{isOpen ? '▲' : '▼'}</span>
                 )}
             </div>
             {isOpen && item.subMenu && (
-                <ul className="sub-menu">
+                <ul className="b-sub-menu">
                     {item.subMenu.map((subItem, index) => (
                         <MenuItem
                             key={index}
