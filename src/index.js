@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./views/home";
 import _ from 'lodash'
+import Theoretical from "./views/theoretical";
 
 const routeConfig = [
     {
@@ -13,8 +14,8 @@ const routeConfig = [
         element: <Home/>,
     },
     {
-        path: "/hello",
-        element: <div>Hello world!</div>,
+        path: "/theoretical",
+        element: <Theoretical/>,
     },
 ]
 

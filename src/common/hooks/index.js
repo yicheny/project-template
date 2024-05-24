@@ -1,0 +1,1 @@
+export {useOpenInfo} from './useOpenInfo'

@@ -1,0 +1,15 @@
+.b-form-item{
+    display: inline-flex;
+    margin: 6px 8px;
+    font-size: 14px;
+    align-items: center;
+    color:rgba(0, 0, 0, 0.88);
+}
+
+.b-form-item-label{
+
+}
+
+.b-form-item-label::after{
+    content: "：";
+}
