@@ -1,11 +1,10 @@
 import React, {useCallback, useState} from 'react';
 import { Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import {store} from "../../base/dom/store";
 import ReactJson from "react-json-view";
 import stylus from './index.module.scss'
-import {useAutoRefresh} from "../../common/hooks";
-import {file} from "../../base/dom/file";
+import {useAutoRefresh} from "@common/hooks";
+import {file, store} from "@base/dom";
 
 const STORE_KEYS = [
     'init_test_object',

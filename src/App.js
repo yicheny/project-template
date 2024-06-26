@@ -8,10 +8,10 @@ function App({children}) {
             label: 'Home',
             to: '/'
         },
-        {
-            label: 'Theoretical',
-            to: '/theoretical'
-        },
+        // {
+        //     label: 'Theoretical',
+        //     to: '/theoretical'
+        // },
         {
             label:"TestStore",
             to: '/test-store'

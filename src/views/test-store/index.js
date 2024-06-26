@@ -1,11 +1,9 @@
 import React, {useCallback, useState} from 'react';
 import {Button, message} from "antd";
-import {store} from "../../base/dom/store";
-import _ from 'lodash'
+import {store} from "@base/dom";
 import ReactJson from "react-json-view";
 import stylus from './index.module.scss'
-import {useAutoRefresh} from "../../common/hooks";
-import {file} from "../../base/dom/file";
+import {useAutoRefresh} from "@common/hooks";
 
 const STORE_KEYS = [
     'init_test_object',
