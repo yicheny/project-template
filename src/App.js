@@ -12,6 +12,14 @@ function App({children}) {
             label: 'Theoretical',
             to: '/theoretical'
         },
+        {
+            label:"TestStore",
+            to: '/test-store'
+        },
+        {
+            label:"TestFile",
+            to: '/test-file'
+        }
     ];
 
     return (

@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./views/home";
 import _ from 'lodash'
 import Theoretical from "./views/theoretical";
+import TestStore from "./views/test-store";
+import TestFile from "./views/test-file";
 
 const routeConfig = [
     {
@@ -16,6 +18,14 @@ const routeConfig = [
     {
         path: "/theoretical",
         element: <Theoretical/>,
+    },
+    {
+        path: "/test-store",
+        element: <TestStore/>,
+    },
+    {
+        path: "/test-file",
+        element: <TestFile/>,
     },
 ]
 
