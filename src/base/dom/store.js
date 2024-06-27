@@ -18,6 +18,7 @@ class Store{
     }
 
     _del(k){
+        this._cache.delete(k)
         this._storage.removeItem(k)
     }
 
@@ -63,6 +64,7 @@ class Store{
 
     // 清空数据
     clear(){
+        this._cache.clear();
         this._storage.clear();
     }
 }
