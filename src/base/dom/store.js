@@ -2,14 +2,19 @@ import _ from 'lodash'
 
 class Store{
     _storage = localStorage;
+    _cache = new Map();
 
     _set(k,v){
+        this._cache.set(k, v);
         this._storage.setItem(k,JSON.stringify(v))
     }
 
     _get(k){
         // return this._storage.getItem(k)
-        return safeParse(this._storage.getItem(k))
+        if(this._cache.get(k) === undefined) {
+            this._cache.set(k, safeParse(this._storage.getItem(k)))
+        }
+        return this._cache.get(k);
     }
 
     _del(k){
@@ -19,6 +24,11 @@ class Store{
     // 导出信息
     exportList(){
 
+    }
+
+    // 导入信息
+    import(key,value){
+        this._set(key,value)
     }
 
     // 导入信息-以数组格式

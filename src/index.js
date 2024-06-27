@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import _ from 'lodash'
 import {routeConfig} from "./config";
+import {initSeeds} from "./seeds/scripts/initSeeds";
+
+initSeeds();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
