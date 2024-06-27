@@ -10,15 +10,15 @@ function App({children}) {
         },
         // {
         //     label: 'Theoretical',
-        //     to: '/theoretical'
+        //     to: '/demo/theoretical'
         // },
         {
             label:"TestStore",
-            to: '/test-store'
+            to: '/test/store'
         },
         {
             label:"TestFile",
-            to: '/test-file'
+            to: '/test/file'
         }
     ];
 

@@ -6,9 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./views/home";
 import _ from 'lodash'
-import Theoretical from "./views/theoretical";
-import TestStore from "./views/test-store";
-import TestFile from "./views/test-file";
+import Theoretical from "./views/demos/theoretical";
+import TestStore from "./views/tests/store";
+import TestFile from "./views/tests/file";
 
 const routeConfig = [
     {
@@ -16,15 +16,15 @@ const routeConfig = [
         element: <Home/>,
     },
     {
-        path: "/theoretical",
+        path: "/demo/theoretical",
         element: <Theoretical/>,
     },
     {
-        path: "/test-store",
+        path: "/test/store",
         element: <TestStore/>,
     },
     {
-        path: "/test-file",
+        path: "/test/file",
         element: <TestFile/>,
     },
 ]

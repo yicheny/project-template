@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Button, Select} from "antd";
 import {useBookOptions} from "./options";
-import {FormItem} from "../../base/components";
+import {FormItem} from "@base/components";
 import QaModal from "./QAModal";
-import {useOpenInfo} from "../../common/hooks";
+import {useOpenInfo} from "@common/hooks";
 
 export default function Theoretical(props) {
     const [book,setBook] = useState('有效率的和牌方法')
