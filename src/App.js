@@ -1,32 +1,14 @@
 import React from 'react';
 import './App.css'
 import {RouteMenu} from "./base/components";
+import {routeConfig} from "./config";
 
 function App({children}) {
-    const menuItems = [
-        {
-            label: 'Home',
-            to: '/'
-        },
-        // {
-        //     label: 'Theoretical',
-        //     to: '/demo/theoretical'
-        // },
-        {
-            label:"TestStore",
-            to: '/test/store'
-        },
-        {
-            label:"TestFile",
-            to: '/test/file'
-        }
-    ];
-
     return (
         <div className="app">
             <RouteMenu className={'app-route-menu'}
                        menuClassName={'app-menu'}
-                       items={menuItems}
+                       items={routeConfig}
                        defaultClose={false}/>
             <div className={'app-content'}>
                 {children}

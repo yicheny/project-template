@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import Menu from "./Menu";
-import {execute} from "../../../common/utils";
+import {execute} from "@common/utils";
 import clsx from "clsx";
 import './index.css'
 
@@ -24,10 +24,10 @@ export default function RouteMenu({onLeafClick,defaultClose,className,menuClassN
 
     function handleLeafClick (item) {
         execute(onLeafClick,item)
-        // if(!item.to) throw new Error("RouteMenu报错：item.to是必填项")
-        if(!item.to) console.error("RouteMenu报错：item.to是必填项")
+        // if(!item.path) throw new Error("RouteMenu报错：item.to是必填项")
+        if(!item.path) console.error("RouteMenu报错：item.path是必填项")
         // console.log('item', item)
-        navigate(item.to)
+        navigate(item.path)
     }
 }
 

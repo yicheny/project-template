@@ -2,7 +2,7 @@
 import React from 'react';
 import classNames from 'clsx';
 import {getKey, useMenu} from "./common";
-import {execute, hasData} from "../../../common/utils";
+import {execute, hasData} from "@common/utils";
 
 const MenuItem = ({ item, openKey }) => {
     const { onClick, activeKey, onBranchClick, onLeafClick } = useMenu()

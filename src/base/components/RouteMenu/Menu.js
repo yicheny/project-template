@@ -5,7 +5,7 @@ import MenuItem from './MenuItem';
 import clsx from "clsx";
 import {getKey, MenuProvider} from "./common";
 import _ from 'lodash'
-import {execute} from "../../../common/utils";
+import {execute} from "@common/utils";
 
 const Menu = ({ items, style, className, onClick, onBranchClick, onLeafClick, defaultActiveKey }) => {
     // const openKeyRef = useRef(new Map())

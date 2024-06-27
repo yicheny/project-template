@@ -1,7 +1,7 @@
 import {createContext, useContext} from "react";
 
 export function getKey(item){
-    return item.to || item.label
+    return item.path || item.label
 }
 
 export const MenuContext = createContext({})
