@@ -2,7 +2,6 @@ import React, {useCallback, useState} from 'react';
 import { Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import ReactJson from "react-json-view";
-import stylus from './index.module.scss'
 import {useAutoRefresh} from "@common/hooks";
 import {file, store} from "@base/dom";
 
@@ -25,7 +24,7 @@ export default function TestFile(props) {
                     file.exportJSONToFile(JSON.stringify(showData), 'showData.json')
                 }} style={{marginLeft:4}}>导出文件</Button>
             </div>
-            <div className={stylus.show}>
+            <div className={'n-show'}>
                 <ReactJson src={showData}
                            collapsed={false}
                            name={false}

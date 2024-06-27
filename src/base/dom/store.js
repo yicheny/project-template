@@ -4,6 +4,8 @@ class Store{
     _storage = localStorage;
     _cache = new Map();
 
+    // -----------------私有方法-----------
+
     _set(k,v){
         this._cache.set(k, v);
         this._storage.setItem(k,JSON.stringify(v))
@@ -21,6 +23,14 @@ class Store{
         this._cache.delete(k)
         this._storage.removeItem(k)
     }
+
+    // 清空数据
+    _clear(){
+        this._cache.clear();
+        this._storage.clear();
+    }
+
+    //-------------------API方法--------------------
 
     // 导出信息
     exportList(){
@@ -46,7 +56,12 @@ class Store{
         })
     }
 
-    // 读取信息-以对象格式返回
+    // 读取信息
+    read(key){
+        return this._get(key)
+    }
+
+    // 读取多份信息-以对象格式返回
     readObj(keys){
         const result = {}
         _.forEach(keys, k => {
@@ -60,12 +75,6 @@ class Store{
         _.forEach(keys, k => {
             this._del(k)
         })
-    }
-
-    // 清空数据
-    clear(){
-        this._cache.clear();
-        this._storage.clear();
     }
 }
 

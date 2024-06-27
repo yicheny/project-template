@@ -2,7 +2,6 @@ import React, {useCallback, useState} from 'react';
 import {Button, message} from "antd";
 import {store} from "@base/dom";
 import ReactJson from "react-json-view";
-import stylus from './index.module.scss'
 import {useAutoRefresh} from "@common/hooks";
 
 const STORE_KEYS = [
@@ -21,7 +20,7 @@ export default function TestStore(props) {
                 <Button type={'primary'} onClick={useInitData2(fetchData)} style={{marginLeft:4}}>初始化2</Button>
                 <Button onClick={useClear(fetchData)} style={{marginLeft:4}}>清空数据</Button>
             </div>
-            <div className={stylus.show}>
+            <div className={'n-show'}>
                 <ReactJson src={showData}
                            collapsed={false}
                            name={false}
