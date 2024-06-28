@@ -13,4 +13,3 @@ export function DemoNote(){
         <Table columns={columns} dataSource={data}/>
     </div>
 }
-
