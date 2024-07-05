@@ -54,7 +54,7 @@ const columns = [
 
 
 export default function TestEditTable(props) {
-    const [editable,setEditable] = useState()
+    const [editable,setEditable] = useState(true)
     return (<div>
             {/*<Switch checked={editable} onClick={setEditable}/>*/}
             <FormItem label={'编辑'}
