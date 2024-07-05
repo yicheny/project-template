@@ -14,6 +14,7 @@ document.addEventListener('click', (event) => {
 
     logger.log('click', {
         target: event.target.tagName,
+        text: event.target.innerText,
         id: lastInteraction.id,
         timestamp: lastInteraction.timestamp,
     });
