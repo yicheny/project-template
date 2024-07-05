@@ -1,4 +1,4 @@
-import {logger} from "@base/logger/logger";
+import {logger} from "@base/logger/local/logger";
 
 let lastInteraction = null;
 
