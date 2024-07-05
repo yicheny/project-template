@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from "antd";
-import {logger} from "@base/logger/local/logger";
+import {logger} from "@base/logger/db/logger";
 
 export default function TestLogger(props) {
     const [count,setCount] = useState(0)
@@ -10,6 +10,7 @@ export default function TestLogger(props) {
         <Button onClick={()=>{
             throw new Error('报错！')
         }}>报错</Button>
-        <Button onClick={()=> logger.saveLogs()}>保存</Button>
+        {/*<Button onClick={()=> logger.saveLogs()}>保存</Button>*/}
+        <Button onClick={()=> logger.exportToJson()}>导出</Button>
     </div>);
 }

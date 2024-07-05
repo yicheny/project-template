@@ -109,6 +109,40 @@ class IndexedDBLogger {
             callback(request.result);
         };
     }
+
+    async exportToJson() {
+        if (!this.dbReady) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            return this.exportToJson();
+        }
+
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction([this.storeName], 'readonly');
+            const store = transaction.objectStore(this.storeName);
+            const request = store.getAll();
+
+            request.onsuccess = () => {
+                const data = request.result;
+                const jsonData = JSON.stringify(data, null, 2);
+                const blob = new Blob([jsonData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${this.dbName}_${this.storeName}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                URL.revokeObjectURL(url);
+                resolve();
+            };
+
+            request.onerror = (event) => {
+                reject('Error fetching data: ' + event.target.errorCode);
+            };
+        });
+    }
 }
 
 export const logger = new IndexedDBLogger();
