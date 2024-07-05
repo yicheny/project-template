@@ -59,7 +59,7 @@ export const EditableCell = ({
                 //     },
                 // ]}
             >
-                <Component ref={inputRef} onPressEnter={save} onBlur={save} {...componentProps} />
+                <Component ref={inputRef} onBlur={save} {...componentProps} />
             </Form.Item>
         );
     }

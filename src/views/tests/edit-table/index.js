@@ -35,7 +35,8 @@ const columns = [
                     { value: 'male', label: '男' },
                     { value: 'female', label: '女' },
                     { value: 'other', label: '其他', disabled: true },
-                ]
+                ],
+                onChange: console.log
             },
         },
     },
