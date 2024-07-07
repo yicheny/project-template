@@ -5,6 +5,7 @@ import TestFile from "../views/tests/file";
 import {DemoNote} from "../views/demos/note";
 import TestEditTable from "../views/tests/edit-table";
 import TestLogger from "../views/tests/logger";
+import TestSentry from "../views/tests/sentry";
 
 export const routeConfig = [
     {
@@ -41,5 +42,10 @@ export const routeConfig = [
         label:"TestLogger",
         path: '/test/logger',
         element: <TestLogger/>,
+    },
+    {
+        label:"TestSentry",
+        path: '/test/sentry',
+        element: <TestSentry/>,
     }
 ]
