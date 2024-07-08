@@ -1,12 +1,18 @@
 import { generateUniqueId } from "@common/utils";
 
 class IndexedDBLogger {
-    constructor() {
-        this.dbName = 'LoggerDB';
-        this.storeName = 'logs';
+    constructor(options) {
+        const _options = {
+            dbName:'LoggerDB',
+            storeName:'logs',
+            version:1,
+            ...options
+        }
+        this.dbName = _options.dbName;
+        this.storeName = _options.storeName;
         this.db = null;
         this.dbReady = false;
-        this.initDB(1);
+        this.initDB(_options.version);
     }
 
     initDB(version) {
