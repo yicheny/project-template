@@ -27,6 +27,7 @@ Sentry.init({
 });
 
 // initLogger()
+// initDataLogger()
 
 initSeeds();
 

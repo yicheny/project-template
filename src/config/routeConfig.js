@@ -4,8 +4,9 @@ import TestStore from "../views/tests/store";
 import TestFile from "../views/tests/file";
 import {DemoNote} from "../views/demos/note";
 import TestEditTable from "../views/tests/edit-table";
-import TestLogger from "../views/tests/logger";
+// import TestLogger from "../views/tests/logger";
 import TestSentry from "../views/tests/sentry";
+import TestDataLogger from "../views/tests/dataLogger";
 
 export const routeConfig = [
     {
@@ -38,10 +39,15 @@ export const routeConfig = [
         path: '/test/edit-table',
         element: <TestEditTable/>,
     },
+    // {
+    //     label:"TestLogger",
+    //     path: '/test/logger',
+    //     element: <TestLogger/>,
+    // },
     {
-        label:"TestLogger",
-        path: '/test/logger',
-        element: <TestLogger/>,
+        label:"DataLogger",
+        path: '/test/dataLogger',
+        element: <TestDataLogger/>,
     },
     {
         label:"TestSentry",
