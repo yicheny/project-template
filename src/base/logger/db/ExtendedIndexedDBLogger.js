@@ -1,6 +1,7 @@
 import { IndexedDBLogger } from 'indexeddb-logger';
 
 class ExtendedIndexedDBLogger extends IndexedDBLogger {
+    // eslint-disable-next-line no-useless-constructor
     constructor(options) {
         super(options);
     }

@@ -4,21 +4,24 @@ import TestStore from "../views/tests/store";
 import TestFile from "../views/tests/file";
 import {DemoNote} from "../views/demos/note";
 import TestEditTable from "../views/tests/edit-table";
-// import TestLogger from "../views/tests/logger";
 import TestSentry from "../views/tests/sentry";
 import TestDataLogger from "../views/tests/dataLogger";
+import Theoretical from "../views/demos/theoretical";
+import TestLogger from "../views/tests/logger";
+import Mirror from "../views/servers/mirror";
 
-export const routeConfig = [
+const fullConfig = [
     {
         label: 'Home',
         path: '/',
         element: <Home/>,
     },
-    // {
-    //     label: 'Theoretical',
-    //     path: '/demo/theoretical',
-    //     element: <Theoretical/>,
-    // },
+    {
+        label: 'Theoretical',
+        path: '/demo/theoretical',
+        element: <Theoretical/>,
+        show: false,
+    },
     {
         label:"DemoNote",
         path:"/demo/note",
@@ -39,11 +42,12 @@ export const routeConfig = [
         path: '/test/edit-table',
         element: <TestEditTable/>,
     },
-    // {
-    //     label:"TestLogger",
-    //     path: '/test/logger',
-    //     element: <TestLogger/>,
-    // },
+    {
+        label:"TestLogger",
+        path: '/test/logger',
+        element: <TestLogger/>,
+        show: false,
+    },
     {
         label:"DataLogger",
         path: '/test/dataLogger',
@@ -53,5 +57,12 @@ export const routeConfig = [
         label:"TestSentry",
         path: '/test/sentry',
         element: <TestSentry/>,
+    },
+    {
+        label: "Mirror",
+        path: '/server/mirror',
+        element: <Mirror/>
     }
 ]
+
+export const routeConfig = fullConfig.filter(x=>x.show !== false)
