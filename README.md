@@ -9,7 +9,7 @@ maja-base
 1. [x] 路由系统
 2. 配置扩展
    1. [x] 配置`alias`
-   2. [ ] 服务代理
+   2. [x] 服务代理
 3. [x] 菜单
 
 # 依赖库
@@ -33,7 +33,7 @@ maja-base
 ### hooks
 1. [x] `useAutoRefresh`
 2. [x] `useOpenInfo`
-3. [ ] `usePost`
+3. [x] `usePost`
 
 ### utils
 1. [x] `hasData`
