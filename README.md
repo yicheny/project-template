@@ -20,8 +20,8 @@ maja-base
 2. 1 `lodash` 简化数据操作
 3. 1 `clsx` 简化`className`处理
 4. 2 `antd` 最流行的`react ui`库
-5. 1 `customize-cra`
-6. 1 `react-app-rewired`
+5. 1 `react-app-rewired` 覆盖默认配置
+6. 1 `customize-cra` 简化配置过程
 7. 1 `sass` 支持`sass`扩展
 8. 2 `@sentry/react` 前端错误监控
 
