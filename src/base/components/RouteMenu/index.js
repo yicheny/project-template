@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import Menu from "./Menu";
 import {execute} from "@common/utils";
@@ -9,8 +9,11 @@ export default function RouteMenu({onLeafClick,defaultClose,className,menuClassN
     const [close, setClose] = useState(defaultClose)
     const navigate = useNavigate();
     const location = useLocation();
+    const [key,setKey] = useState(0)
 
-    // console.log('location', location);
+    useEffect(() => {
+        setKey(k => k+1)
+    }, [location.pathname]);
 
     return <div className={clsx('b-route-menu',className,{close})}>
         <Button onClick={()=> setClose(!close)}>
@@ -19,6 +22,7 @@ export default function RouteMenu({onLeafClick,defaultClose,className,menuClassN
         <Menu defaultActiveKey={location.pathname}
               onLeafClick={handleLeafClick}
               className={menuClassName}
+              key={key}
               {...props}/>
     </div>
 

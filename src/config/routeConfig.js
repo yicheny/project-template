@@ -9,6 +9,7 @@ import TestDataLogger from "../views/tests/dataLogger";
 import Theoretical from "../views/demos/theoretical";
 import TestLogger from "../views/tests/logger";
 import Mirror from "../views/servers/mirror";
+import TestNavigate from "../views/tests/menu/navigate";
 
 const fullConfig = [
     {
@@ -57,6 +58,11 @@ const fullConfig = [
         label:"TestSentry",
         path: '/test/sentry',
         element: <TestSentry/>,
+    },
+    {
+        label:"TestNavigate",
+        path:"/test/menu/navigate",
+        element: <TestNavigate/>
     },
     {
         label: "Mirror",
