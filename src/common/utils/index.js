@@ -22,3 +22,17 @@ export async function tryExecute(callback){
         message.error(e.message)
     }
 }
+
+export function getLeafs(treeList,leafProp='children'){
+    const result = []
+    flatCore(treeList)
+    return result;
+
+    function flatCore(list){
+        if(!Array.isArray(list)) return ;
+        list.forEach(x=>{
+            if(x[leafProp]) return flatCore(x[leafProp])
+            result.push(x)
+        })
+    }
+}

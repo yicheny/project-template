@@ -10,59 +10,72 @@ import Theoretical from "../views/demos/theoretical";
 import TestLogger from "../views/tests/logger";
 import Mirror from "../views/servers/mirror";
 import TestNavigate from "../views/tests/menu/navigate";
+import {getLeafs} from "@common/utils";
 
 const fullConfig = [
     {
         label: 'Home',
         path: '/',
         element: <Home/>,
+        _show:false,
     },
     {
-        label: 'Theoretical',
-        path: '/demo/theoretical',
-        element: <Theoretical/>,
-        show: false,
+        label:"demo",
+        children:[
+            {
+                label: 'Theoretical',
+                path: '/demo/theoretical',
+                element: <Theoretical/>,
+                _show: false,
+            },
+            {
+                label:"DemoNote",
+                path:"/demo/note",
+                element: <DemoNote/>
+            },
+        ]
     },
     {
-        label:"DemoNote",
-        path:"/demo/note",
-        element: <DemoNote/>
-    },
-    {
-        label:"TestStore",
-        path: '/test/store',
-        element: <TestStore/>,
-    },
-    {
-        label:"TestFile",
-        path: '/test/file',
-        element: <TestFile/>,
-    },
-    {
-        label:"EditTable",
-        path: '/test/edit-table',
-        element: <TestEditTable/>,
-    },
-    {
-        label:"TestLogger",
-        path: '/test/logger',
-        element: <TestLogger/>,
-        show: false,
-    },
-    {
-        label:"DataLogger",
-        path: '/test/dataLogger',
-        element: <TestDataLogger/>,
-    },
-    {
-        label:"TestSentry",
-        path: '/test/sentry',
-        element: <TestSentry/>,
-    },
-    {
-        label:"TestNavigate",
-        path:"/test/menu/navigate",
-        element: <TestNavigate/>
+        label:'test',
+        open:true,
+        children: [
+            {
+                label:"TestStore",
+                path: '/test/store',
+                element: <TestStore/>,
+            },
+            {
+                label:"TestFile",
+                path: '/test/file',
+                element: <TestFile/>,
+            },
+            {
+                label:"EditTable",
+                path: '/test/edit-table',
+                element: <TestEditTable/>,
+            },
+            {
+                label:"TestLogger",
+                path: '/test/logger',
+                element: <TestLogger/>,
+                _show: false,
+            },
+            {
+                label:"DataLogger",
+                path: '/test/dataLogger',
+                element: <TestDataLogger/>,
+            },
+            {
+                label:"TestSentry",
+                path: '/test/sentry',
+                element: <TestSentry/>,
+            },
+            {
+                label:"TestNavigate",
+                path:"/test/menu/navigate",
+                element: <TestNavigate/>
+            },
+        ]
     },
     {
         label: "Mirror",
@@ -71,4 +84,6 @@ const fullConfig = [
     }
 ]
 
-export const routeConfig = fullConfig.filter(x=>x.show !== false)
+export const menuConfig = fullConfig.filter(x=>x._show !== false)
+
+export const routeConfig = getLeafs(fullConfig)

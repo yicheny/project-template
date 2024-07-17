@@ -1,28 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, { useMemo, useState} from 'react';
+import _ from 'lodash'
 import {useLocation, useNavigate} from 'react-router-dom';
 import Menu from "./Menu";
-import {execute} from "@common/utils";
+import {execute, getLeafs} from "@common/utils";
 import clsx from "clsx";
 import './index.css'
+import {formatItems} from "@base/components/RouteMenu/common";
 
-export default function RouteMenu({onLeafClick,defaultClose,className,menuClassName,...props}) {
+export default function RouteMenu({onLeafClick,defaultClose,className,menuClassName,items,...props}) {
     const [close, setClose] = useState(defaultClose)
     const navigate = useNavigate();
     const location = useLocation();
-    const [key,setKey] = useState(0)
 
-    useEffect(() => {
-        setKey(k => k+1)
-    }, [location.pathname]);
+    const leafs = useMemo(()=>getLeafs(formatItems(items)),[items])
+
+    const activesKeys = useMemo(()=>{
+        const target = _.find(leafs, x=>x.path === location.pathname)
+        return target?.pathList;
+    },[leafs, location.pathname])
 
     return <div className={clsx('b-route-menu',className,{close})}>
         <Button onClick={()=> setClose(!close)}>
             {close ? "OP" : "CLOSE"}
         </Button>
-        <Menu defaultActiveKey={location.pathname}
+        <Menu activesKeys={activesKeys}
               onLeafClick={handleLeafClick}
               className={menuClassName}
-              key={key}
+              items={items}
               {...props}/>
     </div>
 
@@ -42,3 +46,4 @@ function Button({ children, onClick }){
         </button>
     );
 }
+

@@ -1,30 +1,33 @@
 // src/components/Menu.js
-import React, {useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import './Menu.css';
 import MenuItem from './MenuItem';
 import clsx from "clsx";
-import {getKey, MenuProvider} from "./common";
+import {formatItems, getKey, MenuProvider} from "./common";
+import {execute, getLeafs} from "@common/utils";
 import _ from 'lodash'
-import {execute} from "@common/utils";
 
-const Menu = ({ items, style, className, onClick, onBranchClick, onLeafClick, defaultActiveKey }) => {
-    // const openKeyRef = useRef(new Map())
-    const [openKey,setOpenKey] = useState(new Map())
-    const [activeKey, setActiveKey] = useState(defaultActiveKey);
+const Menu = ({ items, style, className, onClick, onBranchClick, onLeafClick, activesKeys:iActivesKeys }) => {
+    const [activeKeys, setActiveKeys] = useState();
+    const renderItems = useMemo(()=>formatItems(items),[items])
+    const leafNodes = useMemo(()=>getLeafs(renderItems),[renderItems])
+
+    useEffect(() => {
+        setActiveKeys(iActivesKeys)
+    }, [iActivesKeys]);
 
     return (
         <MenuProvider value={{
-            activeKey,
+            activeKeys,
             onClick:handleClick,
             onBranchClick:handleBranchClick,
             onLeafClick:handleLeftClick,
         }}>
             <ul className={clsx("b-menu", className)} style={style}>
-                {items.map((item, index) => {
+                {renderItems.map((item, index) => {
                     return <MenuItem
                         key={index}
                         item={item}
-                        openKey={openKey.get(getKey(item))}
                     />
                 })}
             </ul>
@@ -39,21 +42,14 @@ const Menu = ({ items, style, className, onClick, onBranchClick, onLeafClick, de
         execute(onLeafClick,item)
 
         const key = getKey(item);
-        setActiveKey(key);
+        const target = _.find(leafNodes, x=>x.path === key)
+        setActiveKeys(target.pathList);
     }
 
     function handleBranchClick(item){
         execute(onBranchClick,item)
-        setParentOpen(item)
-
-        function setParentOpen(item){
-            const isChild = item.subMenu.some(x=> x === item)
-            if(isChild) return
-            const key = getKey(item);
-            openKey.set(key, openKey.get(key) ? null : key)
-            setOpenKey(_.clone(openKey))
-        }
     }
 };
 
 export default Menu;
+

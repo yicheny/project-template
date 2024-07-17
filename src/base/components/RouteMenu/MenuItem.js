@@ -1,21 +1,23 @@
 // src/components/MenuItem.js
-import React from 'react';
+import React,{useState} from 'react';
 import classNames from 'clsx';
 import {getKey, useMenu} from "./common";
 import {execute, hasData} from "@common/utils";
+import _ from 'lodash'
 
-const MenuItem = ({ item, openKey }) => {
-    const { onClick, activeKey, onBranchClick, onLeafClick } = useMenu()
+const MenuItem = ({ item }) => {
+    const { onClick, activeKeys, onBranchClick, onLeafClick } = useMenu()
+    const [open,setOpen] = useState(item.open)
 
     const key = getKey(item);
-    const isOpen= openKey === key
-    const isActive= activeKey === key
+    const isActive= _.some(activeKeys, activeKey => _.startsWith(activeKey, key))
     // console.log(key, openKey, activeKey)
 
     const handleClick = () => {
         onClick(item);
 
-        if(hasData(item.subMenu)) {
+        if(hasData(item.children)) {
+            setOpen(!open)
             execute(onBranchClick, item)
         }else{
             execute(onLeafClick, item)
@@ -24,15 +26,15 @@ const MenuItem = ({ item, openKey }) => {
 
     return (
         <li>
-            <div className={classNames('b-menu-item', { active: isActive })} onClick={handleClick}>
+            <div className={classNames('b-menu-item', { active: isActive,})} onClick={handleClick}>
                 {item.label}
-                {item.subMenu && (
-                    <span>{isOpen ? '▲' : '▼'}</span>
+                {item.children && (
+                    <span>{open ? '▲' : '▼'}</span>
                 )}
             </div>
-            {isOpen && item.subMenu && (
+            {open && item.children && (
                 <ul className="b-sub-menu">
-                    {item.subMenu.map((subItem, index) => (
+                    {item.children.map((subItem, index) => (
                         <MenuItem
                             key={index}
                             item={subItem}
