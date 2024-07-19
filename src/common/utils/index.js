@@ -9,6 +9,10 @@ export function execute(func,...props){
     if(_.isFunction(func)) func(...props)
 }
 
+export async function syncExecute(func,...props){
+    if(_.isFunction(func)) return await func(...props)
+}
+
 let uniqIdIndex = 0;
 export function generateUniqueId() {
     // return '_' + Math.random().toString(36).substr(2, 9);

@@ -10,6 +10,9 @@ import {initSeeds} from "./seeds/scripts/initSeeds";
 import './index.css';
 import './base.css'
 import * as Sentry from "@sentry/react";
+import {localDBServer} from "./localDB";
+
+localDBServer();
 
 const openSenTry = false;
 

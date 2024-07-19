@@ -19,11 +19,12 @@ maja-base
 1. 0 `react-router-dom` 路由库，提供基础路由功能
 2. 1 `lodash` 简化数据操作
 3. 1 `clsx` 简化`className`处理
-4. 2 `antd` 最流行的`react ui`库
+4. 1 `antd` 最流行的`react ui`库
 5. 1 `react-app-rewired` 覆盖默认配置
 6. 1 `customize-cra` 简化配置过程
 7. 1 `sass` 支持`sass`扩展
 8. 2 `@sentry/react` 前端错误监控
+9. 2 `localforage` 简单且效率极高的JS存储库
 
 ## 自实现
 1. 2 `indexeddb-logger` 前端日志记录
@@ -40,3 +41,4 @@ maja-base
 2. [x] `execute`
 3. [x] `generateUniqueId`
 4. [x] `tryExecute`
+5. [x] `getLeafs`

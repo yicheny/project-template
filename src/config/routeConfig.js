@@ -11,6 +11,7 @@ import TestLogger from "../views/tests/logger";
 import Mirror from "../views/servers/mirror";
 import TestNavigate from "../views/tests/menu/navigate";
 import {getLeafs} from "@common/utils";
+import TTKHome from "../views/ttk/home";
 
 const fullConfig = [
     {
@@ -21,6 +22,7 @@ const fullConfig = [
     },
     {
         label:"demo",
+        open:false,
         children:[
             {
                 label: 'Theoretical',
@@ -37,7 +39,7 @@ const fullConfig = [
     },
     {
         label:'test',
-        open:true,
+        open:false,
         children: [
             {
                 label:"TestStore",
@@ -58,7 +60,6 @@ const fullConfig = [
                 label:"TestLogger",
                 path: '/test/logger',
                 element: <TestLogger/>,
-                _show: false,
             },
             {
                 label:"DataLogger",
@@ -78,9 +79,25 @@ const fullConfig = [
         ]
     },
     {
-        label: "Mirror",
-        path: '/server/mirror',
-        element: <Mirror/>
+        label:"server",
+        children: [
+            {
+                label: "Mirror",
+                path: '/server/mirror',
+                element: <Mirror/>
+            }
+        ]
+    },
+    {
+        label:'ttk',
+        open:true,
+        children: [
+            {
+                label:'home',
+                path:"/ttk/home",
+                element: <TTKHome/>
+            }
+        ]
     }
 ]
 
