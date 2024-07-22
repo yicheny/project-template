@@ -1,16 +1,16 @@
 import localforage from "localforage";
-import {tableName} from "../config";
+import {USER} from "../../config";
 
 // 通过用户 id 获取数据项
 export async function ttkUserQuery({id}) {
     try {
-        const users = await localforage.getItem(tableName);
+        const users = await localforage.getItem(USER);
         const user = users.find(user => user.id === id);
         if (user) {
-            console.log(`User found:`, user);
+            // console.log(`User found:`, user);
             return user;
         } else {
-            console.log(`User with id ${id} not found.`);
+            // console.log(`User with id ${id} not found.`);
             return null;
         }
     } catch (error) {

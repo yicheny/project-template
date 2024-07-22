@@ -11,7 +11,7 @@ import TestLogger from "../views/tests/logger";
 import Mirror from "../views/servers/mirror";
 import TestNavigate from "../views/tests/menu/navigate";
 import {getLeafs} from "@common/utils";
-import TTKHome from "../views/ttk/home";
+import TTKEmployee from "../views/ttk/employee";
 
 const fullConfig = [
     {
@@ -93,9 +93,9 @@ const fullConfig = [
         open:true,
         children: [
             {
-                label:'home',
-                path:"/ttk/home",
-                element: <TTKHome/>
+                label:'employee',
+                path:"/ttk/employee",
+                element: <TTKEmployee/>
             }
         ]
     }

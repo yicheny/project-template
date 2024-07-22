@@ -9,6 +9,10 @@
 7.17 
 - `add` 支持子菜单设置
 
+7.22 
+- `update` 关闭严格模式
+- `add` `useOpenInfo`增加`checkTypes`方法
+
 # TODO
 1. 跳转详情页
 2. 菜单收缩状态，可以悬浮显示子菜单

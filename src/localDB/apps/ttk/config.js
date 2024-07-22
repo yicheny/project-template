@@ -1,1 +1,2 @@
-export const tableName = 'user';
+export const USER = 'user';
+export const EMPLOYEE = 'employee';

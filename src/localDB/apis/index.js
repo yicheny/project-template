@@ -8,20 +8,31 @@ async function mockApi(method, url, params){
     url = url.slice(4)
 
     const task = taskFor(url)
+    if (task === 404) return Promise.reject(wrapNotFound())
     const data =  await syncExecute(task, params)
 
-    console.log('data', data)
+    // console.log('data', data)
 
-    return new Promise((resolve,reject)=>{
-        resolve({
-            data:{
-                code:0,
-                data
-            }
-        })
-    })
+    return Promise.resolve(wrapSuccess(data))
 }
 
 function taskFor(url){
-    return TASK_MAP[url]
+    return TASK_MAP[url] || 404
+}
+
+function wrapSuccess(data){
+    return {
+        data:{
+            code:0,
+            data,
+            msg:"success"
+        }
+    }
+}
+
+function wrapNotFound(){
+    return {
+        code:404,
+        message:"Not Found"
+    }
 }

@@ -12,11 +12,13 @@ export function useOpenInfo(defaultValue={}) {
     },[])
 
     const checkType = useCallback((type)=>value?.type === type,[value])
+    const checkTypes = useCallback((types)=> types.includes(value?.type),[value])
 
     return {
         value,
         close,
         setInfo,
-        checkType
+        checkType,
+        checkTypes
     }
 }

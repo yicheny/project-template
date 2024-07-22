@@ -1,10 +1,13 @@
 import {useState, useCallback} from "react";
 import _ from 'lodash'
 import axios from "axios";
+import {execute} from "@common/utils";
 
 export const usePost = curryUsePost(axios.post)
 
-export function curryUsePost(postMehod){
+export function curryUsePost(postMethod, hooks){
+    const {fetchBefore, fetchSuccess, fetchFail} = hooks || {}
+
     return function usePost(){
         const [data,setData] = useState()
         const [error, setError] = useState()
@@ -12,8 +15,10 @@ export function curryUsePost(postMehod){
 
         const doFetch = useCallback((url, params={})=>{
             return new Promise((resolve,reject) => {
+                execute(fetchBefore, {url, params})
                 setLoading(true)
-                postMehod(`/api${url}`,params).then(res=>{
+                postMethod(`/api${url}`,params).then(res=>{
+                    execute(fetchSuccess, {url, res})
                     setLoading(false)
 
                     const response = _.get(res,'data')
@@ -23,6 +28,7 @@ export function curryUsePost(postMehod){
                     setData(nextData)
                     resolve(nextData)
                 }).catch((error)=>{
+                    execute(fetchFail, {url, error})
                     setError(error)
                     console.error(error.message)
                     // message.error(error.message)

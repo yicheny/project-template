@@ -1,11 +1,11 @@
 import localforage from 'localforage';
-import {tableName} from '../config'
-
+import {USER} from '../config'
+import {tryInitTable} from "../../../base/utils";
 
 export async function userSeed() {
-    try {
+    await tryInitTable(USER,async () => {
         // 创建表格并添加数据
-        await localforage.setItem(tableName, [
+        await localforage.setItem(USER, [
             {
                 id: 1,
                 funds: 1000,
@@ -16,9 +16,5 @@ export async function userSeed() {
             },
             // 可以继续添加更多用户数据
         ]);
-
-        console.log(`user表初始化数据成功！`);
-    } catch (error) {
-        console.error('user表初始化报错:', error);
-    }
+    })
 }
