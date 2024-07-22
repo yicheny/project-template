@@ -8,7 +8,8 @@ import EditModal from "./Edit";
 export default function TTKEmployee(props) {
     const {data,refreshTable} = useDataSource()
 
-    const { value:info, checkTypes, setInfo, close} = useOpenInfo({type:''})
+    // const { value:info, checkTypes, setInfo, close} = useOpenInfo({type:'add', title:"新增", url:"/ttk/employee/add"})
+    const { value:info, checkTypes, setInfo, close} = useOpenInfo()
 
     return (
         <div>

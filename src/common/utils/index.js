@@ -40,3 +40,10 @@ export function getLeafs(treeList,leafProp='children'){
         })
     }
 }
+
+export function isEm(v){
+    if(_.isNil(v)) return true;
+    if(v === '') return true;
+    if(_.isArray(v) && _.isEmpty(v)) return true;
+    return false;
+}

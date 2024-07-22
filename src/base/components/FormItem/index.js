@@ -1,11 +1,20 @@
 import React from 'react';
 import './index.css'
-import {Input} from "antd";
+import {Input, InputNumber, Select} from "antd";
+import clsx from "clsx";
+import {execute} from "@common/utils";
 
-export default function FormItem({label,component=Input,style,...props}) {
+export default function FormItem({label,required,component=Input,style,labelStyle,onValue,...props}) {
+
     const Component = component
     return <div className={'b-form-item'}>
-        <span className={'b-form-item-label'}>{label}</span>
-        <Component style={{width:180,...style}} {...props}/>
+        <span className={clsx('b-form-item-label', {required})}
+              style={{width:120,textAlign: 'right',...labelStyle}}>{label}</span>
+        <Component style={{width:180,...style}}
+                   onChange={(x)=>{
+                       const value = component === Input ? x.target.value : x
+                       execute(onValue, value)
+                   }}
+                   {...props}/>
     </div>
 }

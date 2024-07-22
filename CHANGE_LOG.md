@@ -12,6 +12,9 @@
 7.22 
 - `update` 关闭严格模式
 - `add` `useOpenInfo`增加`checkTypes`方法
+- `add` `FormItem` 支持通过 `labelStyle` 设置标签样式
+- `add` `utils` 添加 `isEm` 方法
+- `add` `FormItem` 支持`props.onValue` 
 
 # TODO
 1. 跳转详情页
