@@ -1,9 +1,11 @@
-import React, {useEffect, useMemo, useState, useCallback} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import _ from 'lodash'
 import {Modal, Select, InputNumber, message} from "antd";
 import {FormItem} from "@base/components";
 import {usePostM} from "@common/hooks";
-import {isEm, tryExecute} from "@common/utils";
+import {tryExecute} from "@common/utils";
+import {checkRequired} from "@common/bizUtils";
+import {useParams} from "@common/bizHooks";
 
 export default function EditModal({close,info,refresh}) {
     const {doFetch,loading} = usePostM()
@@ -99,27 +101,4 @@ function useTagsOpts(){
     }, [doFetch]);
 
     return options
-}
-
-function useParams(initData={}){
-    // console.log('initData', initData)
-    const [params,setParams] = useState(initData)
-
-    const dispatch = useCallback((bind,value)=>{
-        setParams(x => ({...x, [bind]:value}))
-    },[])
-
-    const dispatchMix = useCallback((nextValue)=>{
-        setParams(x => ({...x, ...nextValue}))
-
-    },[])
-
-    return {params,dispatch,dispatchMix}
-}
-
-function checkRequired(config,params){
-    _.forEach(config,(o)=>{
-        if(!o.required) return ;
-        if(isEm(params[o.bind])) throw new Error(`请填写必填项：${o.label}`)
-    })
 }

@@ -19,7 +19,7 @@ export default function TTKEmployee(props) {
             <div style={{marginBottom: 12}}>
                 <Button onClick={() => setInfo('add', { title:"新增", url:"/ttk/employee/add" })}>新增</Button>
             </div>
-            <Table dataSource={data} columns={useColumns(setInfo)} pagination={false}/>
+            <Table dataSource={data} columns={useColumns(setInfo)} pagination={false} size={'small'}/>
             {checkTypes(['add','edit']) && <EditModal close={close} info={info} refresh={refreshTable}/>}
             {checkTypes(['del']) && <RemoveModal close={close} info={info} refresh={refreshTable}/>}
         </div>
@@ -97,7 +97,7 @@ function useColumns(setInfo) {
                 align:"center",
                 render:(v,o)=><>
                     <Tooltip title={'编辑'}>
-                        <Button type="link" onClick={()=> setInfo('edit', {url:"/ttk/employee/update", data: o})}>
+                        <Button type="link" onClick={()=> setInfo('edit', {title:"编辑", url:"/ttk/employee/update", data: o})}>
                             <ProfileOutlined style={{fontSize:18}}/>
                         </Button>
                     </Tooltip>

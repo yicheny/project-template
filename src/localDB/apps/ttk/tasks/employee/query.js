@@ -1,9 +1,6 @@
-import localforage from "localforage";
-import _ from 'lodash'
 import {EMPLOYEE} from "../../config";
+import {queryTemplate} from "../../../../template/query";
 
-export async function ttkEmployeeQuery({id}) {
-    const collection = await localforage.getItem(EMPLOYEE);
-    if(_.isNil(id)) return collection;
-    return _.filter(collection,x => x.id === id);
+export async function ttkEmployeeQuery(data) {
+    return await queryTemplate(EMPLOYEE)(data)
 }

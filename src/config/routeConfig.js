@@ -12,6 +12,7 @@ import Mirror from "../views/servers/mirror";
 import TestNavigate from "../views/tests/menu/navigate";
 import {getLeafs} from "@common/utils";
 import TTKEmployee from "../views/ttk/employee";
+import TTKUser from "../views/ttk/user";
 
 const fullConfig = [
     {
@@ -96,6 +97,11 @@ const fullConfig = [
                 label:'employee',
                 path:"/ttk/employee",
                 element: <TTKEmployee/>
+            },
+            {
+                label:'user',
+                path:"/ttk/user",
+                element: <TTKUser/>
             }
         ]
     }
