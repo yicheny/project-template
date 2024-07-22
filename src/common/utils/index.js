@@ -47,3 +47,14 @@ export function isEm(v){
     if(_.isArray(v) && _.isEmpty(v)) return true;
     return false;
 }
+
+export function formatPercentage (value, digit) {
+    // 将值转换为百分率，并格式化为指定的小数点位数
+    let percentage = (value * 100).toFixed(digit);
+
+    // 将整数部分每3位加一个逗号
+    let parts = percentage.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    return `${parts.join(".")}%`;
+}

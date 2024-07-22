@@ -15,6 +15,7 @@
 - `add` `FormItem` 支持通过 `labelStyle` 设置标签样式
 - `add` `utils` 添加 `isEm` 方法
 - `add` `FormItem` 支持`props.onValue` 
+- `add` `utils` 添加百分比格式化方法 `formatPercentage`
 
 # TODO
 1. 跳转详情页

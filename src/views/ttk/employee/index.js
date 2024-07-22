@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo} from 'react';
 import {usePostM} from "@common/hooks/usePostM";
-import {tryExecute} from "@common/utils";
+import {formatPercentage, tryExecute} from "@common/utils";
 import {Button, Table, Tag, Tooltip} from "antd";
 import {MinusSquareOutlined, ProfileOutlined} from '@ant-design/icons';
 import {useAutoRefresh, useOpenInfo} from "@common/hooks";
@@ -73,6 +73,7 @@ function useColumns(setInfo) {
                 title: 'Yield',
                 dataIndex: 'yield',
                 key: 'yield',
+                render:v => formatPercentage(v, 2)
             },
             {
                 title: 'Tags',
