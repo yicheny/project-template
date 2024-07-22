@@ -39,7 +39,7 @@ if(openSenTry){
 initSeeds();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <Router>
             <App>
                 <Routes>
@@ -51,7 +51,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </Routes>
             </App>
         </Router>
-    </React.StrictMode>
+    // </React.StrictMode>
 );
 
 reportWebVitals();
