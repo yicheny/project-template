@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useState, useCallback} from 'react';
 import _ from 'lodash'
-import {Modal, Select, InputNumber} from "antd";
+import {Modal, Select, InputNumber, message} from "antd";
 import {FormItem} from "@base/components";
 import {usePostM} from "@common/hooks";
 import {isEm, tryExecute} from "@common/utils";
@@ -18,20 +18,22 @@ export default function EditModal({close,info,refresh}) {
                   maskClosable={false}>
         {
             _.map(formConfig, f=>{
-                return <FormItem style={{width:240}} onValue={v => dispatch(f.bind, v)} {...f}/>
+                return <FormItem style={{width:240}}
+                                 defaultValue={params[f.bind]}
+                                 onValue={v => dispatch(f.bind, v)} {...f}/>
             })
         }
     </Modal>
 
     function handleOk(){
-        console.log('params', params)
-
         tryExecute(async () => {
+            console.log('params', params)
+
             checkRequired(formConfig, params)
             await doFetch(info.url, params)
-            // message.success("保存成功！")
-            // close()
-            // refresh()
+            message.success("保存成功！")
+            close()
+            refresh()
         })
     }
 }

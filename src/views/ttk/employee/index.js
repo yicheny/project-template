@@ -1,14 +1,17 @@
 import React, {useCallback, useMemo} from 'react';
 import {usePostM} from "@common/hooks/usePostM";
 import {tryExecute} from "@common/utils";
-import {Button, Table, Tag} from "antd";
+import {Button, Table, Tag, Tooltip} from "antd";
+import {MinusSquareOutlined, ProfileOutlined} from '@ant-design/icons';
 import {useAutoRefresh, useOpenInfo} from "@common/hooks";
 import EditModal from "./Edit";
+import _ from 'lodash'
+import {RemoveModal} from "@base/components";
 
 export default function TTKEmployee(props) {
     const {data,refreshTable} = useDataSource()
 
-    // const { value:info, checkTypes, setInfo, close} = useOpenInfo({type:'add', title:"新增", url:"/ttk/employee/add"})
+    // const { value:info, checkTypes, setInfo, close} = useOpenInfo({type:'del', text:"outer", url:"/ttk/employee/del", params: {id: '40038558_drrrz7_4'}})
     const { value:info, checkTypes, setInfo, close} = useOpenInfo()
 
     return (
@@ -16,8 +19,9 @@ export default function TTKEmployee(props) {
             <div style={{marginBottom: 12}}>
                 <Button onClick={() => setInfo('add', { title:"新增", url:"/ttk/employee/add" })}>新增</Button>
             </div>
-            <Table dataSource={data} columns={useColumns()} pagination={false}/>
+            <Table dataSource={data} columns={useColumns(setInfo)} pagination={false}/>
             {checkTypes(['add','edit']) && <EditModal close={close} info={info} refresh={refreshTable}/>}
+            {checkTypes(['del']) && <RemoveModal close={close} info={info} refresh={refreshTable}/>}
         </div>
     );
 }
@@ -36,7 +40,7 @@ function useDataSource(){
     return {data,refreshTable}
 }
 
-function useColumns() {
+function useColumns(setInfo) {
     return useMemo(() => {
         return [
             {
@@ -76,8 +80,8 @@ function useColumns() {
                 key: 'tags',
                 render: tags => (
                     <>
-                        {tags.map((tag,index) => {
-                            const colors = ['magenta', 'red', 'orange','green', 'blue']
+                        {_.map(tags,(tag,index) => {
+                            const colors = [ 'gold', 'green', 'blue', 'purple', 'red']
                             return <Tag color={colors[index]} key={tag}>
                                 {tag}
                             </Tag>
@@ -85,6 +89,24 @@ function useColumns() {
                     </>
                 ),
             },
+            {
+                title:"操作项",
+                dataIndex: "_operation",
+                key: "_operation",
+                align:"center",
+                render:(v,o)=><>
+                    <Tooltip title={'编辑'}>
+                        <Button type="link" onClick={()=> setInfo('edit', {url:"/ttk/employee/update", data: o})}>
+                            <ProfileOutlined style={{fontSize:18}}/>
+                        </Button>
+                    </Tooltip>
+                    <Tooltip title={'删除'}>
+                        <Button type="link" onClick={()=> setInfo('del', {text:o.name, url:"/ttk/employee/del",params:{id:o.id}})}>
+                            <MinusSquareOutlined style={{fontSize:18}}/>
+                        </Button>
+                    </Tooltip>
+                </>
+            }
         ]
-    },[])
+    },[setInfo])
 }
