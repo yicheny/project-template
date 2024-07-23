@@ -1,6 +1,6 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useMemo} from 'react';
 import _ from 'lodash'
-import {Modal, Select, InputNumber, message} from "antd";
+import {Modal, InputNumber, message, Divider} from "antd";
 import {FormItem} from "@base/components";
 import {usePostM} from "@common/hooks";
 import {tryExecute} from "@common/utils";
@@ -10,7 +10,7 @@ import {useParams} from "@common/bizHooks";
 export default function EditModal({close,info,refresh}) {
     const {doFetch,loading} = usePostM()
     const formConfig = useFormConfig();
-    const {params,dispatch} = useParams({tags:[], ...info.data})
+    const {params,dispatch} = useParams({ funds:1000, targetFunds: 6000, countdown:5, employeeStack:[], ...info.data })
 
     return <Modal title={info.title}
                   confirmLoading={loading}
@@ -29,7 +29,7 @@ export default function EditModal({close,info,refresh}) {
 
     function handleOk(){
         tryExecute(async () => {
-            console.log('params', params)
+            // console.log('params', params)
 
             checkRequired(formConfig, params)
             await doFetch(info.url, params)
@@ -41,7 +41,6 @@ export default function EditModal({close,info,refresh}) {
 }
 
 function useFormConfig(){
-    const tagsOpts = useTagsOpts()
     return useMemo(()=>{
         return [
             {
@@ -50,55 +49,36 @@ function useFormConfig(){
                 required:true,
             },
             {
-                label:"Point",
-                bind:"point",
+                label:"funds",
+                bind:"funds",
                 component:InputNumber,
                 required:true,
                 min:0,
-                max:9999,
+                max:999999,
                 precision:0,
             },
             {
-                label:"User Count",
-                bind:"userCount",
-                component:InputNumber,
-                required:true,
-                min:1,
-                max:5,
-                precision:0,
-            },
-            {
-                label:"Yield",
-                bind:"yield",
+                label:"countdown",
+                bind:"countdown",
                 component:InputNumber,
                 required:true,
                 min:0,
-                max:3,
-                precision:4,
-                step:0.1
+                max:30,
+                precision: 0
             },
             {
-                label:"Tags",
-                bind:"tags",
-                component:Select,
-                options:tagsOpts,
-                mode:"multiple",
-                maxCount:5,
-                maxTagCount:1,
+                label:"targetFunds",
+                bind:"targetFunds",
+                component:InputNumber,
+                required:true,
+                min:0,
+                max:999999,
+                precision:0,
+            },
+            {
+                label:"memo",
+                bind:"memo",
             },
         ]
-    },[tagsOpts])
-}
-
-function useTagsOpts(){
-    const {doFetch} = usePostM()
-    const [options,setOptions] = useState()
-
-    useEffect(() => {
-        doFetch(`/ttk/tag/query`).then(data => {
-            setOptions(_.map(data, x=>({label:x, value:x})))
-        })
-    }, [doFetch]);
-
-    return options
+    },[])
 }

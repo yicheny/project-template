@@ -4,21 +4,27 @@ import {tryExecute} from "@common/utils";
 import {Button, Table, Tooltip} from "antd";
 import {MinusSquareOutlined, ProfileOutlined} from "@ant-design/icons";
 import {RemoveModal} from "@base/components";
+import EditModal from "./Edit";
 
 export default function TTKUser(props) {
     const {data,refreshTable} = useDataSource()
+    // const { value:info, checkTypes, setInfo, close} = useOpenInfo({type:"add", title: "新增", url: "/ttk/user/add"})
     const { value:info, checkTypes, setInfo, close} = useOpenInfo()
 
     return (<div>
-            <Table dataSource={data} columns={useColumns(setInfo)} pagination={false} size={'small'}/>
-            {checkTypes(['del']) && <RemoveModal close={close} info={info} refresh={refreshTable}/>}
-        </div>);
+        <div style={{marginBottom: 12}}>
+            <Button onClick={() => setInfo('add', {title: "新增", url: "/ttk/user/add"})}>新增</Button>
+        </div>
+        <Table dataSource={data} columns={useColumns(setInfo)} pagination={false} size={'small'}/>
+        {checkTypes(['add','edit']) && <EditModal close={close} info={info} refresh={refreshTable}/>}
+        {checkTypes(['del']) && <RemoveModal close={close} info={info} refresh={refreshTable}/>}
+    </div>);
 }
 
-function useDataSource(){
-    const {data,doFetch} = usePostM()
+function useDataSource() {
+    const {data, doFetch} = usePostM()
     const refreshTable = useCallback(() => {
-        tryExecute(async ()=>{
+        tryExecute(async () => {
             const data = await doFetch('/ttk/user/query',{})
             console.log('data', data)
         })
@@ -35,48 +41,35 @@ function useColumns(setInfo) {
             {
                 title: "序号",
                 dataIndex: '_no',
-                key: '_no',
                 render:(v,o,i)=>i+1,
             },
             {
                 title: 'ID',
                 dataIndex: 'id',
-                key: 'id',
             },
             {
                 title: 'Name',
                 dataIndex: 'name',
-                key: 'name',
             },
             {
                 title: 'funds',
                 dataIndex: 'funds',
-                key: 'funds',
             },
-            // {
-            //     title: 'employeeStack',
-            //     dataIndex: 'employeeStack',
-            //     key: 'employeeStack',
-            // },
             {
                 title: 'countdown',
                 dataIndex: 'countdown',
-                key: 'countdown',
             },
             {
                 title: 'targetFunds',
                 dataIndex: 'targetFunds',
-                key: 'targetFunds',
             },
             {
                 title: 'memo',
                 dataIndex: 'memo',
-                key: 'memo',
             },
             {
                 title:"操作项",
                 dataIndex: "_operation",
-                key: "_operation",
                 align:"center",
                 render:(v,o)=><>
                     <Tooltip title={'编辑'}>

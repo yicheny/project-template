@@ -94,13 +94,13 @@ const fullConfig = [
         open:true,
         children: [
             {
-                label:'employee',
-                path:"/ttk/employee",
+                label:'employee-base',
+                path:"/ttk/employee-base",
                 element: <TTKEmployee/>
             },
             {
-                label:'user',
-                path:"/ttk/user",
+                label:'user-base',
+                path:"/ttk/user-base",
                 element: <TTKUser/>
             }
         ]

@@ -46,39 +46,32 @@ function useColumns(setInfo) {
             {
                 title: "序号",
                 dataIndex: '_no',
-                key: '_no',
                 render:(v,o,i)=>i+1,
             },
             {
                 title: 'ID',
                 dataIndex: 'id',
-                key: 'id',
             },
             {
                 title: 'Name',
                 dataIndex: 'name',
-                key: 'name',
             },
             {
                 title: 'Point',
                 dataIndex: 'point',
-                key: 'point',
             },
             {
                 title: 'User Count',
                 dataIndex: 'userCount',
-                key: 'userCount',
             },
             {
                 title: 'Yield',
                 dataIndex: 'yield',
-                key: 'yield',
                 render:v => formatPercentage(v, 2)
             },
             {
                 title: 'Tags',
                 dataIndex: 'tags',
-                key: 'tags',
                 render: tags => (
                     <>
                         {_.map(tags,(tag,index) => {
@@ -93,8 +86,7 @@ function useColumns(setInfo) {
             {
                 title:"操作项",
                 dataIndex: "_operation",
-                key: "_operation",
-                align:"center",
+                 align:"center",
                 render:(v,o)=><>
                     <Tooltip title={'编辑'}>
                         <Button type="link" onClick={()=> setInfo('edit', {title:"编辑", url:"/ttk/employee/update", data: o})}>
