@@ -11,8 +11,8 @@ import TestLogger from "../views/tests/logger";
 import Mirror from "../views/servers/mirror";
 import TestNavigate from "../views/tests/menu/navigate";
 import {getLeafs} from "@common/utils";
-import TTKEmployee from "../views/ttk/employee";
-import TTKUser from "../views/ttk/user";
+import TTKEmployee from "../views/ttk/employee-base";
+import TTKUser from "../views/ttk/user-base";
 
 const fullConfig = [
     {
