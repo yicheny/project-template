@@ -13,6 +13,7 @@ import TestNavigate from "../views/tests/menu/navigate";
 import {getLeafs} from "@common/utils";
 import TTKEmployee from "../views/ttk/employee-base";
 import TTKUser from "../views/ttk/user-base";
+import TTKEmployeeInitSetup from "../views/ttk/employee-init-setup";
 
 const fullConfig = [
     {
@@ -102,6 +103,11 @@ const fullConfig = [
                 label:'user-base',
                 path:"/ttk/user-base",
                 element: <TTKUser/>
+            },
+            {
+                label:'employee-init-setup',
+                path:"/ttk/employee-init-setup",
+                element: <TTKEmployeeInitSetup/>
             }
         ]
     }

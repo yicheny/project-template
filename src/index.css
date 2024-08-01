@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*控制整个滚动条*/
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 8px;
+  height: 8px;
+  background-clip: padding-box;
+}
+
+/*滚动条两端方向按钮*/
+::-webkit-scrollbar-button {
+  background-color: transparent;
+  width: 0;
+  height: 0;
+}
+
+/*滚动条中间滑动部分*/
+::-webkit-scrollbar-thumb {
+  background-color: rgba(170, 170, 170, 0.7);
+  border-radius: 5px;
+}
+
+/*滚动条右下角区域*/
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+  width: 0;
+  height: 0;
+}

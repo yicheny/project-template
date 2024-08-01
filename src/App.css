@@ -15,4 +15,5 @@
     padding:12px 16px;
     background: rgb(246 247 249);
     flex:1;
+    overflow: hidden;
 }

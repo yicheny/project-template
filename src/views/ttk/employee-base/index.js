@@ -19,7 +19,7 @@ export default function TTKEmployee(props) {
             <div style={{marginBottom: 12}}>
                 <Button onClick={() => setInfo('add', { title:"新增", url:"/ttk/employee/add" })}>新增</Button>
             </div>
-            <Table dataSource={data} columns={useColumns(setInfo)} pagination={false} size={'small'}/>
+            <Table dataSource={data} columns={useColumns(setInfo)} pagination={false} size={'small'} scroll={{ y: 720 }}/>
             {checkTypes(['add','edit']) && <EditModal close={close} info={info} refresh={refreshTable}/>}
             {checkTypes(['del']) && <RemoveModal close={close} info={info} refresh={refreshTable}/>}
         </div>
@@ -47,6 +47,8 @@ function useColumns(setInfo) {
                 title: "序号",
                 dataIndex: '_no',
                 render:(v,o,i)=>i+1,
+                align:"center",
+                width:48,
             },
             {
                 title: 'ID',

@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css'
-import {Input, InputNumber, Select} from "antd";
+import {Input} from "antd";
 import clsx from "clsx";
 import {execute} from "@common/utils";
 
@@ -11,9 +11,9 @@ export default function FormItem({label,required,component=Input,style,labelStyl
         <span className={clsx('b-form-item-label', {required})}
               style={{width:120,textAlign: 'right',...labelStyle}}>{label}</span>
         <Component style={{width:180,...style}}
-                   onChange={(x)=>{
+                   onChange={(x,...rest)=>{
                        const value = component === Input ? x.target.value : x
-                       execute(onValue, value)
+                       execute(onValue, value, ...rest)
                    }}
                    {...props}/>
     </div>

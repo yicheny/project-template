@@ -17,6 +17,10 @@
 - `add` `FormItem` 支持`props.onValue` 
 - `add` `utils` 添加百分比格式化方法 `formatPercentage`
 
+7.29
+- `add` `bizHooks` 添加 `useQuery`
+- `add` `bizHooks` 添加 `useSelectNodes`
+
 # TODO
 1. 跳转详情页
 2. 菜单收缩状态，可以悬浮显示子菜单

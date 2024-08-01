@@ -1,0 +1,42 @@
+.view{
+  height:100vh;
+  margin:-16px -16px;
+}
+
+.cardList{
+  max-height: calc(100% - 76px);
+  overflow: auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* 自动填充每行卡片 */
+  gap: 20px; /* 间距为20px */
+  justify-content: center; /* 居中显示 */
+  margin: 0 auto; /* 容器居中 */
+  padding: 20px; /* 可选，增加内边距 */
+}
+
+.employeeCard{
+  &.active{
+    background-color: rgba(144, 238, 144, 0.5); /* 浅绿色，50%透明度 */
+  }
+  
+  cursor:pointer;
+  min-width: 180px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.06);
+  //margin-left:8px;
+  //margin-right:8px;
+  //margin-bottom:12px;
+
+  .employeeProp{
+
+  }
+}
