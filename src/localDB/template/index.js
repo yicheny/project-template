@@ -1,0 +1,5 @@
+export {addTemplate} from './add'
+export {upsertTemplate} from './upsert'
+export {updateTemplate} from './update'
+export {delTemplate} from './del'
+export {queryTemplate} from './query'

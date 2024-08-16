@@ -14,6 +14,7 @@ import {getLeafs} from "@common/utils";
 import TTKEmployee from "../views/ttk/employee-base";
 import TTKUser from "../views/ttk/user-base";
 import TTKEmployeeInitSetup from "../views/ttk/employee-init-setup";
+import TotalCountData from "../views/total/count/data";
 
 const fullConfig = [
     {
@@ -92,7 +93,7 @@ const fullConfig = [
     },
     {
         label:'ttk',
-        open:true,
+        open:false,
         children: [
             {
                 label:'employee-base',
@@ -110,9 +111,41 @@ const fullConfig = [
                 element: <TTKEmployeeInitSetup/>
             }
         ]
+    },
+    {
+        label: 'total',
+        open:true,
+        children: [
+            {
+                label: 'count',
+                open:true,
+                children:[
+                    {
+                        label:"data",
+                        path:"/total/count/data",
+                        element:<TotalCountData/>
+                    }
+                ]
+            }
+        ]
     }
 ]
 
-export const menuConfig = fullConfig.filter(x=>x._show !== false)
+export const menuConfig = filterTree(fullConfig)
 
 export const routeConfig = getLeafs(fullConfig)
+
+function filterTree(data) {
+    return data
+        .filter(item => item._show !== false) // 过滤掉 _show: false 的节点
+        .map(item => {
+            // 如果有 children，则递归过滤 children
+            if (item.children) {
+                return {
+                    ...item,
+                    children: filterTree(item.children) // 递归调用过滤函数
+                };
+            }
+            return item;
+        });
+}

@@ -8,6 +8,7 @@ import {ttkEmployeeDel} from "../apps/ttk/tasks/employee/del";
 import {ttkUserAdd} from "../apps/ttk/tasks/user/add";
 import {ttkUserUpdate} from "../apps/ttk/tasks/user/update";
 import {ttkUserDel} from "../apps/ttk/tasks/user/del";
+import {totalCountDel, totalCountQuery, totalCountUpsert} from "../apps/total/task/count/base";
 
 export const TASK_MAP = Object.freeze({
     '/hello': helloTask,
@@ -20,4 +21,7 @@ export const TASK_MAP = Object.freeze({
     '/ttk/employee/add': ttkEmployeeAdd,
     '/ttk/employee/update': ttkEmployeeUpdate,
     '/ttk/employee/del': ttkEmployeeDel,
+    '/total/count/query': totalCountQuery,
+    '/total/count/upsert': totalCountUpsert,
+    '/total/count/del': totalCountDel,
 })
