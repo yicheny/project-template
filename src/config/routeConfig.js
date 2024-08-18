@@ -15,6 +15,7 @@ import TTKEmployee from "../views/ttk/employee-base";
 import TTKUser from "../views/ttk/user-base";
 import TTKEmployeeInitSetup from "../views/ttk/employee-init-setup";
 import TotalCountData from "../views/total/count/data";
+import {TotalCountInfo} from "../views/total/count/info";
 
 const fullConfig = [
     {
@@ -124,6 +125,11 @@ const fullConfig = [
                         label:"data",
                         path:"/total/count/data",
                         element:<TotalCountData/>
+                    },
+                    {
+                        label:"info",
+                        path:"/total/count/info",
+                        element:<TotalCountInfo/>
                     }
                 ]
             }

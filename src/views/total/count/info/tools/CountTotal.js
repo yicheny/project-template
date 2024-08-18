@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import {Total} from "../../../_common/class/Total";
 
-export class CountTotal extends Total {
+class CountTotal extends Total {
 
     totalRecent(specDays){
         const oneDayInfos = this._textToInfos(this._source)
@@ -70,3 +70,6 @@ export class CountTotal extends Total {
     }
 }
 
+export function createCountTotal(...params){
+    return new CountTotal(...params)
+}
