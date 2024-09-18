@@ -42,3 +42,6 @@ maja-base
 3. [x] `generateUniqueId`
 4. [x] `tryExecute`
 5. [x] `getLeafs`
+
+# 项目要求
+- node【推荐 >=20】
