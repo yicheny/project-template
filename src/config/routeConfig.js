@@ -16,6 +16,7 @@ import TTKUser from "../views/ttk/user-base";
 import TTKEmployeeInitSetup from "../views/ttk/employee-init-setup";
 import TotalCountData from "../views/total/count/data";
 import {TotalCountInfo} from "../views/total/count/info";
+import {G6Demo1} from "../views/antv-g6/demo1";
 
 const fullConfig = [
     {
@@ -23,6 +24,16 @@ const fullConfig = [
         path: '/',
         element: <Home/>,
         _show:false,
+    },
+    {
+        label:"AntV-G6",
+        children: [
+            {
+                label: "demo1",
+                path: '/antv-g6/demo1',
+                element: <G6Demo1/>
+            }
+        ]
     },
     {
         label:"demo",
